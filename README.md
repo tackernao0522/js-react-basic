@@ -78,3 +78,26 @@ import App from './App.jsx'
 
 ReactDom.render(<App />, document.getElementById('root'))
 ```
+
+## 44 React でイベントや style の扱い方を知る
+
+- `src/App.jsx`を編集<br>
+
+```jsx:App.jsx
+const App = () => {
+  const onClickButton = () => alert()
+  const contentStyle = {
+    color: 'blue',
+    fontSize: '18px',
+  }
+  return (
+    <>
+      <h1 style={{ color: 'red' }}>こんにちは!</h1>
+      <p style={contentStyle}>お元気ですか？</p>
+      <button onClick={onClickButton}>ボタン</button>
+    </>
+  )
+}
+
+export default App
+```
