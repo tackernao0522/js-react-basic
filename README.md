@@ -101,3 +101,138 @@ const App = () => {
 
 export default App
 ```
+
+## 45 Props を知る
+
+- `src/App.jsx`を編集<br>
+
+```jsx:App.jsx
+const App = () => {
+  const onClickButton = () => alert()
+  const contentStyle = {
+    color: 'blue',
+    fontSize: '18px',
+  }
+  const contentLadyStyle = {
+    color: 'pink',
+    fontSize: '18px',
+  }
+  return (
+    <>
+      <h1 style={{ color: 'red' }}>こんにちは!</h1>
+      <p style={contentStyle}>お元気ですか？</p>
+      <p style={contentLadyStyle}>元気です!</p>
+      <button onClick={onClickButton}>ボタン</button>
+    </>
+  )
+}
+
+export default App
+```
+
+- `$ mkdir src/componetns && touch $_/ColorfulMessage.jsx`を実行<br>
+
+* `src/components/ColorfulMessage.jsx`を編集<br>
+
+```jsx:ColorfulMessage.jsx
+const ColorfulMessage = () => {
+  const contentStyle = {
+    color: 'blue',
+    fontSize: '18px',
+  }
+  return <p style={contentStyle}>お元気ですか？</p>
+}
+
+export default ColorfulMessage
+```
+
+- `src/App.jsx`を編集<br>
+
+```jsx:App.jsx
+import ColorfulMessage from './componetns/ColorfulMessage'
+
+const App = () => {
+  const onClickButton = () => alert()
+  const contentLadyStyle = {
+    color: 'pink',
+    fontSize: '18px',
+  }
+  return (
+    <>
+      <h1 style={{ color: 'red' }}>こんにちは!</h1>
+      // 編集
+      <ColorfulMessage color="blue" message="お元気ですか？" />
+      <p style={contentLadyStyle}>元気です!</p>
+      <button onClick={onClickButton}>ボタン</button>
+    </>
+  )
+}
+
+export default App
+```
+
+- `src/components/ColorfulMessage.jsx`を編集<br>
+
+```jsx:ColorfulMessage.jsx
+const ColorfulMessage = (props) => {
+  // console.log(props)
+  const contentStyle = {
+    color: props.color,
+    fontSize: '18px',
+  }
+  return <p style={contentStyle}>{props.message}</p>
+}
+
+export default ColorfulMessage
+```
+
+- `src/App.jsx`を編集<br>
+
+```jsx:App.jsx
+import ColorfulMessage from './componetns/ColorfulMessage'
+
+const App = () => {
+  const onClickButton = () => alert()
+  return (
+    <>
+      <h1 style={{ color: 'red' }}>こんにちは!</h1>
+      <ColorfulMessage color="blue">お元気ですか？</ColorfulMessage>
+      <ColorfulMessage color="pink">元気です!</ColorfulMessage>
+      <button onClick={onClickButton}>ボタン</button>
+    </>
+  )
+}
+
+export default App
+```
+
+- `src/components/ColorfulMessage.jsx`を編集<br>
+
+```jsx:ColorfulMessage.jsx
+const ColorfulMessage = (props) => {
+  // console.log(props)
+  const contentStyle = {
+    color: props.color,
+    fontSize: '18px',
+  }
+  return <p style={contentStyle}>{props.children}</p>
+}
+
+export default ColorfulMessage
+```
+
+- `src/components/ColorfulMessage.jsx`を編集<br>
+
+```jsx:ColorfulMessage.jsx
+const ColorfulMessage = (props) => {
+  // console.log(props)
+  const { color, children } = props
+  const contentStyle = {
+    color,
+    fontSize: '18px',
+  }
+  return <p style={contentStyle}>{children}</p>
+}
+
+export default ColorfulMessage
+```
