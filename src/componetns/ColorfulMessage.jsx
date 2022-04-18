@@ -1,4 +1,5 @@
 const ColorfulMessage = (props) => {
+  console.log("カラフル")
   // console.log(props)
   const { color, children } = props
   const contentStyle = {
