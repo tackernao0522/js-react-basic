@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ColorfulMessage from './componetns/ColorfulMessage'
+import { ColorfulMessage } from './componetns/ColorfulMessage'
 
 const App = () => {
   console.log('最初')
@@ -23,7 +23,7 @@ const App = () => {
         faceShowFlag && setFaceShowFlag(false)
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [num]) // numの値が変化したときだけレンダリングされるようになる
 
   return (
